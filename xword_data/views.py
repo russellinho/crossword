@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 def drill(request):
-    return
+    return render(request, 'base.html')
 
 def answer(request):
     return
