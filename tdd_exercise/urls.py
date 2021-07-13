@@ -18,6 +18,7 @@ from django.urls import path
 from xword_data import views
 
 urlpatterns = [
-    path('', views.drill, name="drill"),
+    path('', views.drill, name="xword-drill"),
+    path('answer/', views.answer, name="xword-answer"),
     path('admin/', admin.site.urls),
 ]

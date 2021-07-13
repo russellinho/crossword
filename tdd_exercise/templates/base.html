@@ -11,16 +11,33 @@
   <body style="text-align: center;">
     <main role="main" class="container">
       <h1>Crossword Exercise</h1>
+      {% if messages %}
+          {% for message in messages %}
+            <p style="color: red;">{{ message }}</p>
+          {% endfor %}
+      {% endif %}
       <br/>
       <br/>
       {% block content %}
-      <form action="/" method="POST">
-        <label for="answerInput">Answer:</label>
-        <input type="text" id="answerInput" name="answerInput" value="" />
+      <div id="clue_block">
+        <p>Clue:&nbsp;{{ clue_text }}</p>
+        <br/>
+        <p>Length:&nbsp;{{ clue_len }}</p>
+        <br/>
+        <p>Puzzle:&nbsp;{{ puzzle_title }}</p>
+      </div>
+      <br>
+      <br/>
+      <form action="/answer" method="GET">
+        <input type="hidden" id="clue_id" name="clue_id" value={{clue_id}} />
+        <label for="answer">Answer:</label>
+        <input type="text" id="answer" name="answer" value="" />
         <br/>
         <br/>
         <input type="submit" value="Submit Answer" />
       </form>
+      <br/>
+      <a href="/answer?clue_id={{ clue_id }}">I give up</a>
       {% endblock %}
     </main>
   </body>

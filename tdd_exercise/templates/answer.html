@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Crossword puzzle TDD exercise.">
+
+    <title>{% block title %}Crossword Exercise{% endblock %}</title>
+  </head>
+
+  <body style="text-align: center;">
+    <main role="main" class="container">
+      <h1>Crossword Exercise</h1>
+      <br/>
+      <br/>
+      {% block content %}
+      <div id="success_block">
+        {% if success == 1 %}
+        <h2>Congratulations! {{ answer }} is the correct answer!</h2>
+        {% else %}
+        <h2>The answer is: {{ answer }}</h2>
+        {% endif %}
+      </div>
+      <br>
+      <br/>
+      <table style="margin-left: auto; margin-right: auto; width: 20%; border: 2px solid black;">
+        <tr style="border: 1px solid black;">
+          <th style="border: 1px solid black;">Count</th>
+          <th style="border: 1px solid black;">Entry</th>
+        </tr>
+        {% for clue in clues %}
+        <tr style="border: 1px solid black;">
+          <td style="border: 1px solid black;">
+            {{ counts|get_item:clue }}
+          </td>
+          <td style="border: 1px solid black;">
+            {{ clue }}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <br/>
+      <br/>
+      <a href="/">Get another clue</a>
+      {% endblock %}
+    </main>
+  </body>
+</html>
