@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def drill(request):
+    return
+
+def answer(request):
+    return
